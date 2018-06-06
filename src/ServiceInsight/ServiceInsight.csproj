@@ -360,6 +360,7 @@
     <Compile Include="ServiceControl\ServiceControlRootUrls.cs" />
     <Compile Include="Settings\MessageListSettings.cs" />
     <Compile Include="Settings\SequenceDiagramSettings.cs" />
+    <Compile Include="Shell\ApplicationVersionService.cs" />
     <Compile Include="Shell\IPersistPartLayout.cs" />
     <Compile Include="ValueConverters\BoolToStrokeDashArrayConverter.cs" />
     <Compile Include="SequenceDiagram\SequenceDiagramView.xaml.cs">
@@ -855,6 +856,9 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Feedback.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

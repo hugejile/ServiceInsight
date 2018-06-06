@@ -81,6 +81,7 @@
             shell = new ShellViewModel(
                         app,
                         windowManager,
+                        Substitute.For<IApplicationVersionService>(),
                         endpointExplorer,
                         messageList,
                         () => Substitute.For<ServiceControlConnectionViewModel>(),

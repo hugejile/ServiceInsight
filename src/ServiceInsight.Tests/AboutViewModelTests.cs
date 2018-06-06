@@ -13,6 +13,7 @@
     {
         NetworkOperations networkOperations;
         IServiceControl serviceControl;
+        IApplicationVersionService versionService;
         LicenseRegistrationViewModel licenseRegistration;
         AboutViewModel sut;
 
@@ -22,8 +23,9 @@
             networkOperations = Substitute.For<NetworkOperations>();
             serviceControl = Substitute.For<IServiceControl>();
             licenseRegistration = Substitute.For<LicenseRegistrationViewModel>();
+            versionService = Substitute.For<IApplicationVersionService>();
 
-            sut = new AboutViewModel(networkOperations, serviceControl, licenseRegistration);
+            sut = new AboutViewModel(networkOperations, versionService, serviceControl, licenseRegistration);
         }
 
         [Test]

@@ -43,6 +43,7 @@
 
         IAppCommands appCommander;
         IWindowManagerEx windowManager;
+        IApplicationVersionService applicationVersionService;
         IEventAggregator eventAggregator;
         IWorkNotifier workNotifier;
         AppLicenseManager licenseManager;
@@ -57,6 +58,7 @@
         public ShellViewModel(
             IAppCommands appCommander,
             IWindowManagerEx windowManager,
+            IApplicationVersionService applicationVersionService,
             EndpointExplorerViewModel endpointExplorer,
             MessageListViewModel messages,
             Func<ServiceControlConnectionViewModel> serviceControlConnection,
@@ -77,6 +79,7 @@
         {
             this.appCommander = appCommander;
             this.windowManager = windowManager;
+            this.applicationVersionService = applicationVersionService;
             this.eventAggregator = eventAggregator;
             this.workNotifier = workNotifier;
             this.licenseManager = licenseManager;
@@ -108,7 +111,7 @@
             AboutCommand = Command.Create(() => this.windowManager.ShowDialog<AboutViewModel>());
             HelpCommand = Command.Create(() => Process.Start(@"http://docs.particular.net/serviceinsight"));
             ConnectToServiceControlCommand = Command.CreateAsync(this, ConnectToServiceControl, vm => vm.CanConnectToServiceControl);
-
+            ProvideFeedbackCommand = Command.Create(() => Process.Start($"https://github.com/Particular/ServiceInsight/issues/new?title=Feedback&body=Feedback for ServiceInsight {applicationVersionService.GetVersion()} ({applicationVersionService.GetCommitHash()})"));
             RefreshAllCommand = Command.CreateAsync(RefreshAll);
 
             RegisterCommand = Command.Create(() =>
@@ -205,6 +208,8 @@
         public ICommand ResetLayoutCommand { get; }
 
         public ICommand OptionsCommand { get; }
+
+        public ICommand ProvideFeedbackCommand { get; }
 
         public async Task ConnectToServiceControl()
         {
